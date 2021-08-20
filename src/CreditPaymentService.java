@@ -1,8 +1,10 @@
-public class CreditPaymentService {
-    public long calculate(double Rate) {
+  public class CreditPaymentService {
+    public double calculate(double Rate) {
         double creditAmount = 1_000_000;
-        double creditTerm = 24;
-       double MonthlyPayment = (creditAmount / creditTerm) * Rate / 10;
-        return (long) MonthlyPayment;
+        int creditTerm = 12;
+        double monthlyInterest = Rate / 100 / creditTerm;
+        double degree = Math.pow(1 + monthlyInterest, 12);
+    return creditAmount * (monthlyInterest +(monthlyInterest / (degree - 1)));
+
     }
-}
+    }
